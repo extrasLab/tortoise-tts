@@ -31,7 +31,7 @@ MODELS_DIR = os.environ.get('TORTOISE_MODELS_DIR', DEFAULT_MODELS_DIR)
     #'autoregressive.pth': 'https://huggingface.co/jbetker/tortoise-tts-v2/resolve/main/.models/autoregressive.pth',
 
 MODELS = {
-    'autoregressive.pth': 'https://huggingface.co/pacatrooper/Tortoise-tts/resolve/main/autoregressive.pth',
+    'autoregressive.pth': 'https://huggingface.co/pacatrooper/Tortoise-tts/resolve/main/latest_cantonese_gpt.pth',
     'classifier.pth': 'https://huggingface.co/jbetker/tortoise-tts-v2/resolve/main/.models/classifier.pth',
     'clvp2.pth': 'https://huggingface.co/jbetker/tortoise-tts-v2/resolve/main/.models/clvp2.pth',
     'cvvp.pth': 'https://huggingface.co/jbetker/tortoise-tts-v2/resolve/main/.models/cvvp.pth',
