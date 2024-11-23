@@ -9,6 +9,9 @@ from tokenizers import Tokenizer
 # Regular expression matching whitespace:
 from unidecode import unidecode
 
+# Jyutping
+import pycantonese
+
 _whitespace_re = re.compile(r'\s+')
 
 
@@ -150,6 +153,28 @@ def english_cleaners(text):
   return text
 
 
+def chinese_cleaners(text):
+  '''Pipeline for Chinese text, including number expansion.'''
+  text = expand_numbers(text)
+  text = collapse_whitespace(text)
+  text = text.replace('"', '')
+  return text
+
+
+def text_romanise(text):
+    text_list = []
+    for not_word, word in pycantonese.characters_to_jyutping(text):
+        if word:
+            word_list = re.split('([A-Za-z]+\d)', word)
+            text_list.append(" ".join(word_list))
+        else:
+            text_list.append(not_word)
+    text = re.sub(' +', ' ', "".join(text_list).lstrip(' '))
+    text = text.replace(' ，', ',')
+    text = text.replace(' 。', '.')
+    return text
+
+
 def lev_distance(s1, s2):
   if len(s1) > len(s2):
     s1, s2 = s2, s1
@@ -166,7 +191,7 @@ def lev_distance(s1, s2):
   return distances[-1]
 
 
-DEFAULT_VOCAB_FILE = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../data/tokenizer.json')
+DEFAULT_VOCAB_FILE = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../data/cantonese_asr_jyut_tokenizer.json')
 
 
 class VoiceBpeTokenizer:
@@ -177,10 +202,11 @@ class VoiceBpeTokenizer:
         if use_basic_cleaners:
             self.preprocess_text = basic_cleaners
         else:
-            self.preprocess_text = english_cleaners
+            self.preprocess_text = chinese_cleaners
 
     def encode(self, txt):
         txt = self.preprocess_text(txt)
+        txt = self.text_romanise(txt)
         txt = txt.replace(' ', '[SPACE]')
         return self.tokenizer.encode(txt).ids
 
