@@ -161,7 +161,7 @@ def chinese_cleaners(text):
   return text
 
 
-def text_romanise(text):
+def romanise_text(text):
     text_list = []
     for not_word, word in pycantonese.characters_to_jyutping(text):
         if word:
@@ -203,10 +203,11 @@ class VoiceBpeTokenizer:
             self.preprocess_text = basic_cleaners
         else:
             self.preprocess_text = chinese_cleaners
+        self.romanise_text = romanise_text
 
     def encode(self, txt):
         txt = self.preprocess_text(txt)
-        txt = self.text_romanise(txt)
+        txt = self.romanise_text(txt)
         txt = txt.replace(' ', '[SPACE]')
         return self.tokenizer.encode(txt).ids
 
