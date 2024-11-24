@@ -28,7 +28,6 @@ pbar = None
 
 DEFAULT_MODELS_DIR = os.path.join(os.path.expanduser('~'), '.cache', 'tortoise', 'models')
 MODELS_DIR = os.environ.get('TORTOISE_MODELS_DIR', DEFAULT_MODELS_DIR)
-    #'autoregressive.pth': 'https://huggingface.co/jbetker/tortoise-tts-v2/resolve/main/.models/autoregressive.pth',
 
 MODELS = {
     'autoregressive.pth': 'https://huggingface.co/pacatrooper/Tortoise-tts/resolve/main/latest_cantonese_gpt.pth',
@@ -47,7 +46,10 @@ def get_model_path(model_name, models_dir=MODELS_DIR):
     """
     if model_name not in MODELS:
         raise ValueError(f'Model {model_name} not found in available models.')
-    model_path = hf_hub_download(repo_id="Manmay/tortoise-tts", filename=model_name, cache_dir=models_dir)
+    if model_name == 'autoregressive.pth':
+        model_path = hf_hub_download(repo_id="pacatrooper/Tortoise-tts", filename='latest_cantonese_gpt.pth', cache_dir=models_dir)
+    else:
+        model_path = hf_hub_download(repo_id="Manmay/tortoise-tts", filename=model_name, cache_dir=models_dir)
     return model_path
 
 

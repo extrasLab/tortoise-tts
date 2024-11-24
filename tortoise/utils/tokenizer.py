@@ -155,7 +155,7 @@ def english_cleaners(text):
 
 def chinese_cleaners(text):
   '''Pipeline for Chinese text, including number expansion.'''
-  text = expand_numbers(text)
+  text = expand_numbers(text) # To be removed
   text = collapse_whitespace(text)
   text = text.replace('"', '')
   return text
@@ -206,8 +206,8 @@ class VoiceBpeTokenizer:
         self.romanise_text = romanise_text
 
     def encode(self, txt):
-        txt = self.preprocess_text(txt)
         txt = self.romanise_text(txt)
+        txt = self.preprocess_text(txt)
         txt = txt.replace(' ', '[SPACE]')
         return self.tokenizer.encode(txt).ids
 
