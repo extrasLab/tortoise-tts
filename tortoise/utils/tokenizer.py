@@ -155,7 +155,6 @@ def english_cleaners(text):
 
 def chinese_cleaners(text):
   '''Pipeline for Chinese text, including number expansion.'''
-  text = expand_numbers(text) # To be removed
   text = collapse_whitespace(text)
   text = text.replace('"', '')
   return text
