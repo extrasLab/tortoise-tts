@@ -156,7 +156,11 @@ def english_cleaners(text):
 def chinese_cleaners(text):
   '''Pipeline for Chinese text, including number expansion.'''
   text = collapse_whitespace(text)
-  text = text.replace('"', '')
+  text = text.replace(' ，', ',')
+  text = text.replace(' ：', ',')
+  text = text.replace(' ；', ',')
+  text = text.replace(' 。', '.')
+  text = text.replace(' ！', '.')
   return text
 
 
@@ -169,8 +173,6 @@ def romanise_text(text):
         else:
             text_list.append(not_word)
     text = re.sub(' +', ' ', "".join(text_list).lstrip(' '))
-    text = text.replace(' ，', ',')
-    text = text.replace(' 。', '.')
     return text
 
 
