@@ -161,6 +161,7 @@ def chinese_cleaners(text):
   text = text.replace(' ；', ',')
   text = text.replace(' 。', '.')
   text = text.replace(' ！', '.')
+  text = text.replace(' ？', '.')
   return text
 
 
