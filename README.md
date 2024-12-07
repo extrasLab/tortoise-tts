@@ -1,22 +1,37 @@
 # Hong Kong Cantonese
 
-This model is trained from open Hong Kong Cantonese dataset. It is expected to be a prototype only to showcase current opensource speech technology.
+This model is trained from public Hong Kong Cantonese dataset. It is expected to be a research prototype only to showcase current opensource speech technology.
 
-![Sample Audio 1](examples/finetuned/cantonese/generated_trained_01.wav)
+## Here are some speech samples (remember to unmute for playback)
 
-![Sample Audio 2](examples/finetuned/cantonese/generated_trained_02.wav)
+[Sample Audio 1](https://github.com/user-attachments/assets/fe845842-649b-44aa-9a6b-9d372250b04d)
 
-![Sample Audio 3](examples/finetuned/cantonese/generated_trained_03.wav)
+[Sample Audio 2](https://github.com/user-attachments/assets/373a731a-0b63-4b6f-9c3d-2b212b4d056e)
 
-![Sample Audio 4](examples/finetuned/cantonese/generated_trained_04.wav)
+[Sample Audio 3](https://github.com/user-attachments/assets/8d3e76b4-0c64-4c55-abfa-84702ef34f34)
 
-<audio controls src="examples/finetuned/cantonese/generated_trained_01.wav" title="Sample Audio 1"></audio>
+[Sample Audio 4](https://github.com/user-attachments/assets/6b86906f-e54f-4238-9f3b-f4129daec0f6)
 
-<audio controls src="examples/finetuned/cantonese/generated_trained_02.wav" title="Sample Audio 2"></audio>
+## Installation
 
-<audio controls src="examples/finetuned/cantonese/generated_trained_03wav" title="Sample Audio 3"></audio>
+Please follow the steps below for TorToiSe model, but use this repository instead.
 
-<audio controls src="examples/finetuned/cantonese/generated_trained_04.wav" title="Sample Audio 4"></audio>
+## Model availability
+
+Access to the model is limited and subjected to approval.
+
+## Usage
+
+This works for me:
+
+```python
+reference_clips = [utils.audio.load_audio(p, 22050) for p in clips_paths]
+tts = api.TextToSpeech(kv_cache=True, half=True)
+text = "諗諗吓都係唔好，轉返公仔麵加腸仔要多啲麻油，唔該堂食轉返攞走，唔要餐具但係要牙籤同紙巾"
+pcm_audio = tts.tts_with_preset(text, voice_samples=reference_clips, preset='fast')
+```
+
+---
 
 # TorToiSe
 
