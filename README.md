@@ -1,3 +1,15 @@
+# Hong Kong Cantonese
+
+This model is trained from open Hong Kong Cantonese dataset. It is expected to be a prototype only to showcase current opensource speech technology.
+
+![Sample Audio 1](examples/finetuned/cantonese/generated_trained_01.wav)
+
+![Sample Audio 2](examples/finetuned/cantonese/generated_trained_02.wav)
+
+![Sample Audio 3](examples/finetuned/cantonese/generated_trained_03.wav)
+
+![Sample Audio 4](examples/finetuned/cantonese/generated_trained_04.wav)
+
 # TorToiSe
 
 Tortoise is a text-to-speech program built with the following priorities:
