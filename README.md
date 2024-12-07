@@ -10,6 +10,14 @@ This model is trained from open Hong Kong Cantonese dataset. It is expected to b
 
 ![Sample Audio 4](examples/finetuned/cantonese/generated_trained_04.wav)
 
+<audio controls src="examples/finetuned/cantonese/generated_trained_01.wav" title="Sample Audio 1"></audio>
+
+<audio controls src="examples/finetuned/cantonese/generated_trained_02.wav" title="Sample Audio 2"></audio>
+
+<audio controls src="examples/finetuned/cantonese/generated_trained_03wav" title="Sample Audio 3"></audio>
+
+<audio controls src="examples/finetuned/cantonese/generated_trained_04.wav" title="Sample Audio 4"></audio>
+
 # TorToiSe
 
 Tortoise is a text-to-speech program built with the following priorities:
